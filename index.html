@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QRGen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">QR<span>Gen</span></div>
+    <div class="tagline">Generate QR codes for free, no account needed</div>
+  </header>
+
+  <div class="grid">
+    <div>
+      <h1>Turn any content into a QR code</h1>
+      <p class="lede">Type or paste your content and download a code ready for print or the web.</p>
+
+      <div class="tabs" role="tablist" aria-label="Content type">
+        <button class="tab active" data-type="url">Link</button>
+        <button class="tab" data-type="email">Email</button>
+        <button class="tab" data-type="phone">Phone</button>
+        <button class="tab" data-type="wifi">Wi-Fi</button>
+        <button class="tab" data-type="vcard">Contact</button>
+      </div>
+
+      <div class="field-group" id="input-area">
+        <label id="input-label" for="main-input">Website address</label>
+        <input type="text" id="main-input" placeholder="https://example.com" autocomplete="off">
+        <div class="field-hint" id="input-hint"></div>
+      </div>
+
+      <div id="wifi-extra" style="display:none;" class="row" role="group" aria-label="Wi-Fi details">
+        <div class="field-group">
+          <label for="wifi-pass">Password</label>
+          <div style="position:relative;">
+            <input type="text" id="wifi-pass" placeholder="Network password" style="padding-right:44px;">
+            <button type="button" id="wifi-pass-toggle" class="ghost" style="position:absolute;right:4px;top:4px;bottom:4px;padding:0 10px;font-size:12px;">show</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="wifi-enc">Security</label>
+          <select id="wifi-enc">
+            <option value="WPA">WPA/WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">None</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="vcard-extra" style="display:none;">
+        <div class="field-group">
+          <label for="vc-name">Full name</label>
+          <input type="text" id="vc-name" placeholder="Jane Doe">
+        </div>
+        <div class="row">
+          <div class="field-group">
+            <label for="vc-phone">Phone</label>
+            <input type="text" id="vc-phone" placeholder="+1 555 123 4567">
+          </div>
+          <div class="field-group">
+            <label for="vc-email">Email</label>
+            <input type="text" id="vc-email" placeholder="jane@example.com">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="vc-org">Company</label>
+          <input type="text" id="vc-org" placeholder="Company name (optional)">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="preview-panel">
+      <div class="scan-frame">
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+        <div id="qr-target"><span class="empty-hint">Your QR code will appear here</span></div>
+      </div>
+      <div class="char-counter" id="char-counter"></div>
+      <div class="print-hint" id="print-hint"></div>
+      <div class="actions">
+        <button class="primary" id="download-png-btn" disabled>PNG</button>
+        <button class="ghost" id="download-svg-btn" disabled>SVG</button>
+        <button class="ghost" id="copy-btn" disabled>Copy</button>
+        <button class="ghost" id="clear-btn">Clear</button>
+      </div>
+      <div class="meta">Generated in your browser — nothing is sent anywhere</div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 QRGen</span>
+    <a href="privacy.html">Privacy & Terms</a>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
